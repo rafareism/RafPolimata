@@ -15,6 +15,8 @@ Este repositório passa a incluir uma documentação de referência de nível av
 - [`docs/DEZ_DIMENSOES_SEMANTICAS.md`](docs/DEZ_DIMENSOES_SEMANTICAS.md): 10 dimensões semânticas e dinâmicas do sentido.
 - [`docs/MATRIZ_JURIDICO_TECNOLOGICA.md`](docs/MATRIZ_JURIDICO_TECNOLOGICA.md): trilha jurídico-tecnológica com análise supralegal e risco.
 - [`docs/LICENCAS_COMPARADAS.md`](docs/LICENCAS_COMPARADAS.md): comparação entre licenças/termos (incluindo referência a BLAKE3, e práticas de grandes fornecedores como Microsoft/Oracle/Google).
+- [`docs/ATRATORES_42_JURIDICOS.md`](docs/ATRATORES_42_JURIDICOS.md): framework de 42 atratores jurídicos com 4 níveis por conteúdo e 7 direções antagônicas.
+- [`docs/BASES_SUPRALEGAIS_E_PADROES.md`](docs/BASES_SUPRALEGAIS_E_PADROES.md): mapeamento de bases supralegais, constitucionais e padrões técnicos internacionais.
 
 ## Aviso importante
 
