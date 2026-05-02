@@ -25,3 +25,9 @@ Este repositório passa a incluir uma documentação de referência de nível av
 
 > Este material é técnico-acadêmico e **não substitui parecer jurídico profissional**.
 > A aplicação em produção deve passar por validação de advogados habilitados em cada jurisdição relevante.
+
+
+## Qualidade e automação
+
+- Pipeline GitHub Actions em `.github/workflows/ci.yml` com build estrito (`-Wall -Wextra -Werror`) e smoke test do binário.
+- Hotfix de compilação aplicado no núcleo C para restaurar uma base compilável e facilitar futuras refatorações incrementais.
