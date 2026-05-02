@@ -1,0 +1,24 @@
+name: CI
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build (strict warnings)
+        run: |
+          gcc -std=c11 -Wall -Wextra -Werror \
+            raf_main.c raf_frontend.c raf_cpu.c raf_asm_emit.c raf_precomp.c \
+            -o raf_compile
+
+      - name: Smoke test
+        run: |
+          ./raf_compile --help
+          ./raf_compile raf_main.c ci_out
