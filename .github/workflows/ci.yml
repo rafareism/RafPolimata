@@ -6,19 +6,37 @@ on:
   pull_request:
 
 jobs:
-  build:
+  semantic-coherence:
+    name: Semantic coherence and falsifiability gates
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Build (strict warnings)
+      - name: Validate canonical coherence protocol
+        run: python3 scripts/validate_coherence_protocol.py
+
+      - name: Host C syntax check
+        run: bash RAF_host_syntax_check.sh
+
+      - name: Build compiler (strict warnings)
         run: |
           gcc -std=c11 -Wall -Wextra -Werror \
             raf_main.c raf_frontend.c raf_cpu.c raf_asm_emit.c raf_precomp.c \
             -o raf_compile
 
-      - name: Smoke test
+      - name: Smoke test compiler
         run: |
           ./raf_compile --help
           ./raf_compile raf_main.c ci_out
+
+      - name: Generate P(k) falsifiability report (non-blocking verdict)
+        run: |
+          python3 scripts/first_test_pk.py --output results/first_test_report.json
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          report = json.loads(Path('results/first_test_report.json').read_text(encoding='utf-8'))
+          assert report['verdict'] in {'PASS', 'FAIL'}
+          print('P(k) verdict:', report['verdict'])
+          PY

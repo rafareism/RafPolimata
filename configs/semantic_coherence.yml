@@ -1,0 +1,78 @@
+# Protocolo canônico de coerência semântica RAFAELIA/RafPolimata.
+# Este YAML é deliberadamente simples para ser auditável por shell/Python stdlib,
+# sem dependência externa de parser no pipeline.
+protocol:
+  id: rafpolimata.semantic_coherence.v1
+  version: 1
+  alpha_q16: 16384        # 0.25 em Q16.16
+  attractor_count: 42
+  torus_dimensions: 7
+  entropy_milli_max: 8000
+  proof_mode: falsifiable # dados podem reprovar sem quebrar a rastreabilidade
+
+state_vector:
+  - u
+  - v
+  - psi
+  - chi
+  - rho
+  - delta
+  - sigma
+
+formula_registry:
+  - id: F01; symbol: T7; implementation: Benchmark/raf_toroid.h; invariant: torus_dimensions == 7
+  - id: F02; symbol: state_vector; implementation: configs/semantic_coherence.yml; invariant: len(state_vector) == 7
+  - id: F03; symbol: ToroidalMap(x); implementation: Benchmark/raf_toroid.h; invariant: deterministic_map
+  - id: F04; symbol: x_tuple; implementation: docs/PROTOCOLO_CANONICO_COHERENCIA.md; invariant: data_entropy_hash_state
+  - id: F05; symbol: C_update; implementation: Benchmark/raf_toroid.h; invariant: alpha_q16 == 16384
+  - id: F06; symbol: H_update; implementation: Benchmark/raf_toroid.h; invariant: alpha_q16 == 16384
+  - id: F07; symbol: alpha; implementation: configs/semantic_coherence.yml; invariant: alpha == 0.25
+  - id: F08; symbol: coherence_phi; implementation: docs/PROTOCOLO_CANONICO_COHERENCIA.md; invariant: phi == (1-H)*C
+  - id: F09; symbol: attractor_limit; implementation: docs/PROTOCOLO_CANONICO_COHERENCIA.md; invariant: finite_attractor_set
+  - id: F10; symbol: A42; implementation: docs/ATRATORES_42_JURIDICOS.md; invariant: attractor_count == 42
+  - id: F11; symbol: spectrum; implementation: scripts/first_test_pk.py; invariant: observable_transform_documented
+  - id: F12; symbol: cardio_resonance; implementation: docs/PROTOCOLO_CANONICO_COHERENCIA.md; invariant: normalized_dot_product
+  - id: F13; symbol: linguistic_tensor; implementation: docs/DEZ_DIMENSOES_SEMANTICAS.md; invariant: language_layers_are_explicit
+  - id: F14; symbol: entropy_approx; implementation: Benchmark/raf_toroid.h; invariant: unique_transition_entropy
+  - id: F15; symbol: phi_hash_mix; implementation: Benchmark/raf_hash.h; invariant: xor_then_multiply
+  - id: F16; symbol: CRC_polynomial; implementation: Benchmark/raf_crc32c.h; invariant: checksum_path_exists
+  - id: F17; symbol: Merkle_root; implementation: Benchmark/raf_hash.h; invariant: chained_digest
+  - id: F18; symbol: spiral_decay; implementation: docs/PROTOCOLO_CANONICO_COHERENCIA.md; invariant: sqrt3_over_2_ratio
+  - id: F19; symbol: golden_phi; implementation: Benchmark/raf_types.h; invariant: PHI64_defined
+  - id: F20; symbol: link_energy; implementation: Benchmark/raf_toroid.h; invariant: sin_cos_link
+  - id: F21; symbol: recurrence; implementation: Benchmark/raf_fsm.h; invariant: next_state_function
+  - id: F22; symbol: F_decay; implementation: docs/PROTOCOLO_CANONICO_COHERENCIA.md; invariant: recurrence_documented
+  - id: F23; symbol: period_42; implementation: docs/PROTOCOLO_CANONICO_COHERENCIA.md; invariant: cycle_bound_documented
+  - id: F24; symbol: capacity_grid; implementation: configs/semantic_coherence.yml; invariant: C == M*N
+  - id: F25; symbol: information_bound; implementation: configs/semantic_coherence.yml; invariant: I <= log2(M*N)
+  - id: F26; symbol: pi_max_nonvoid; implementation: docs/PROTOCOLO_CANONICO_COHERENCIA.md; invariant: VOID_is_excluded
+  - id: F27; symbol: pi_max_target; implementation: configs/semantic_coherence.yml; invariant: entropy_milli_max <= 9000
+  - id: F28; symbol: gcd_row_step; implementation: docs/PROTOCOLO_CANONICO_COHERENCIA.md; invariant: coprime_row_walk
+  - id: F29; symbol: gcd_col_step; implementation: docs/PROTOCOLO_CANONICO_COHERENCIA.md; invariant: coprime_col_walk
+  - id: F30; symbol: xor_accumulator; implementation: Benchmark/raf_hash.h; invariant: xor_byte_semantics
+  - id: F31; symbol: fnv_xor; implementation: Benchmark/raf_hash.h; invariant: h_xor_byte
+  - id: F32; symbol: fnv_prime; implementation: Benchmark/raf_hash.h; invariant: prime_0x100000001B3
+  - id: F33; symbol: crc_complement; implementation: Benchmark/raf_crc32c.h; invariant: crc32c_available
+  - id: F34; symbol: vfc_quantized_key; implementation: docs/PROTOCOLO_CANONICO_COHERENCIA.md; invariant: key_stream_is_conceptual_not_claimed_secure
+  - id: F35; symbol: xor_cipher_step; implementation: docs/PROTOCOLO_CANONICO_COHERENCIA.md; invariant: no_security_claim_without_review
+  - id: F36; symbol: gauss_law; implementation: docs/PROTOCOLO_CANONICO_COHERENCIA.md; invariant: analogy_not_empirical_claim
+  - id: F37; symbol: angular_projection; implementation: Benchmark/raf_toroid.h; invariant: sin_delta_theta_cos_delta_phi
+  - id: F38; symbol: hex_height; implementation: docs/PROTOCOLO_CANONICO_COHERENCIA.md; invariant: sqrt3_over_2_geometry
+  - id: F39; symbol: spiral_n; implementation: docs/PROTOCOLO_CANONICO_COHERENCIA.md; invariant: geometric_decay
+  - id: F40; symbol: prime_factorization; implementation: docs/PROTOCOLO_CANONICO_COHERENCIA.md; invariant: decomposition_axis
+  - id: F41; symbol: graph_fourier; implementation: docs/PROTOCOLO_CANONICO_COHERENCIA.md; invariant: documented_transform
+  - id: F42; symbol: distance_mismatch; implementation: docs/PROTOCOLO_CANONICO_COHERENCIA.md; invariant: semantic_distance_can_diverge
+  - id: F43; symbol: entropy_milli; implementation: Benchmark/raf_toroid.h; invariant: documented_integer_entropy
+  - id: F44; symbol: layer_resonance; implementation: docs/PROTOCOLO_CANONICO_COHERENCIA.md; invariant: normalized_per_layer
+  - id: F45; symbol: unit_torus_state; implementation: Benchmark/raf_toroid.h; invariant: state_in_unit_interval
+  - id: F46; symbol: geometric_bits; implementation: configs/semantic_coherence.yml; invariant: log2_capacity
+  - id: F47; symbol: hamiltonian_semantic; implementation: docs/PROTOCOLO_CANONICO_COHERENCIA.md; invariant: metaphor_requires_empirical_adapter
+  - id: F48; symbol: weighted_link_energy; implementation: Benchmark/raf_toroid.h; invariant: alpha_weighted_link
+  - id: F49; symbol: geometric_capacity; implementation: configs/semantic_coherence.yml; invariant: C_geom == M*N
+  - id: F50; symbol: integration_phi; implementation: docs/PROTOCOLO_CANONICO_COHERENCIA.md; invariant: explicit_inputs_s_spectrum_entropy_coherence_graph
+
+pipeline_gates:
+  - id: G1; command: python3 scripts/validate_coherence_protocol.py; blocks_release: true
+  - id: G2; command: bash RAF_host_syntax_check.sh; blocks_release: true
+  - id: G3; command: gcc -std=c11 -Wall -Wextra -Werror raf_main.c raf_frontend.c raf_cpu.c raf_asm_emit.c raf_precomp.c -o raf_compile; blocks_release: true
+  - id: G4; command: python3 scripts/first_test_pk.py --output results/first_test_report.json; blocks_release: false

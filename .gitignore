@@ -1,0 +1,11 @@
+# Host validation/build artefacts
+build_host_check/
+raf_compile
+ci_out*
+
+# Benchmark binaries
+Benchmark/raf_enterprise_*
+
+# Python cache
+__pycache__/
+*.py[cod]
