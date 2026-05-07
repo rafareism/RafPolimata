@@ -1,0 +1,57 @@
+id,method,target,domain,estimated_gain,baseline_to_compare,metric,estimated_value,real_value,status,notes
+M001,Acesso direto a DDRx PORTx PINx,MCU/AVR,GPIO,10x-40x,Arduino API / biblioteca padrão,latency_ns / throughput / binary_size / jitter,,,L0,"Controla direção, escrita e leitura sem API Arduino."
+M002,Toggle por escrita em PINx,MCU/AVR,GPIO,20x-40x,Arduino API / biblioteca padrão,latency_ns / throughput / binary_size / jitter,,,L0,Alterna pino escrevendo 1 no registrador PINx.
+M003,Timer CTC para evento periódico,MCU/AVR,Timer,5x-30x,Arduino API / biblioteca padrão,latency_ns / throughput / binary_size / jitter,,,L0,Gera evento preciso sem delay bloqueante.
+M004,Timer Fast PWM por registrador,MCU/AVR,PWM,2x-10x,Arduino API / biblioteca padrão,latency_ns / throughput / binary_size / jitter,,,L0,Configura PWM direto sem analogWrite.
+M005,Timer Phase Correct PWM para controle motor,MCU/AVR,PWM/Motor,2x-10x,Arduino API / biblioteca padrão,latency_ns / throughput / binary_size / jitter,,,L0,PWM mais simétrico para motor/controle.
+M006,Input Capture para medir pulso,MCU/AVR,Timer,5x-50x,Arduino API / biblioteca padrão,latency_ns / throughput / binary_size / jitter,,,L0,Mede largura de pulso em hardware.
+M007,Output Compare para gerar onda sem CPU,MCU/AVR,Timer,10x-100x,Arduino API / biblioteca padrão,latency_ns / throughput / binary_size / jitter,,,L0,Hardware alterna saída no compare.
+M008,ADC free-running,MCU/AVR,ADC,2x-10x,Arduino API / biblioteca padrão,latency_ns / throughput / binary_size / jitter,,,L0,Conversão contínua sem chamada analogRead.
+M009,ADC com oversampling,MCU/AVR,ADC/DSP,qualidade +1-4 bits,Arduino API / biblioteca padrão,latency_ns / throughput / binary_size / jitter,,,L0,Aumenta resolução efetiva acumulando amostras.
+M010,ADC com média móvel inteira,MCU/AVR,ADC/DSP,estabilidade,Arduino API / biblioteca padrão,latency_ns / throughput / binary_size / jitter,,,L0,Filtro simples sem float.
+M011,ADC com filtro IIR fixed-point,MCU/AVR,ADC/DSP,5x-50x vs float,Arduino API / biblioteca padrão,latency_ns / throughput / binary_size / jitter,,,L0,Filtro recursivo com deslocamento.
+M012,UART polling mínimo,MCU/AVR,UART,2x-10x software,Arduino API / biblioteca padrão,latency_ns / throughput / binary_size / jitter,,,L0,Envia/recebe por registrador UDR/UCSR.
+M013,UART interrupt-driven com ring buffer,MCU/AVR,UART,CPU livre,Arduino API / biblioteca padrão,latency_ns / throughput / binary_size / jitter,,,L0,Fila circular por interrupção.
+M014,SPI full-duplex por registrador,MCU/AVR,SPI,2x-5x software,Arduino API / biblioteca padrão,latency_ns / throughput / binary_size / jitter,,,L0,Transferência direta em SPDR.
+M015,SPI burst transfer,MCU/AVR,SPI,2x-10x lote,Arduino API / biblioteca padrão,latency_ns / throughput / binary_size / jitter,,,L0,Reduz overhead entre bytes.
+M016,I2C/TWI com timeout,MCU/AVR,I2C,robustez,Arduino API / biblioteca padrão,latency_ns / throughput / binary_size / jitter,,,L0,Evita loop infinito em barramento travado.
+M017,Watchdog como recuperação de travamento,MCU/AVR,Safety,resiliência,Arduino API / biblioteca padrão,latency_ns / throughput / binary_size / jitter,,,L0,Reinicia em falha real.
+M018,Watchdog como base temporal aproximada,MCU/AVR,Timer,baixo consumo,Arduino API / biblioteca padrão,latency_ns / throughput / binary_size / jitter,,,L0,Acorda periodicamente sem Timer principal.
+M019,Sleep mode com wake por interrupção,MCU/AVR,Power,até 90%+ energia,Arduino API / biblioteca padrão,latency_ns / throughput / binary_size / jitter,,,L0,Dorme e acorda por evento.
+M020,Brown-out flag como diagnóstico de alimentação,MCU/AVR,Power/Safety,diagnóstico,Arduino API / biblioteca padrão,latency_ns / throughput / binary_size / jitter,,,L0,Detecta queda de tensão/reset.
+M021,GPIO por mmap,Raspberry/Linux,GPIO,10x-100x vs libs,wiringPi/RPi.GPIO/gpiozero,latency_ns / throughput / binary_size / jitter,,,L0,Mapeia registradores no espaço do processo.
+M022,GPIO por /dev/gpiomem,Raspberry/Linux,GPIO,segurança,wiringPi/RPi.GPIO/gpiozero,latency_ns / throughput / binary_size / jitter,,,L0,Acesso GPIO sem /dev/mem total.
+M023,GPIO por /dev/mem controlado,Raspberry/Linux,MMIO,baixo nível,wiringPi/RPi.GPIO/gpiozero,latency_ns / throughput / binary_size / jitter,,,L0,Acesso físico amplo quando necessário.
+M024,Leitura de contador ARM64 cntvct_el0,ARM64,Timing,ns/us preciso,clock_gettime/gettimeofday/syscall,latency_ns / throughput / binary_size / jitter,,,L0,Mede ciclos/tempo sem syscall.
+M025,Uso de cntfrq_el0 para converter ciclos em tempo,ARM64,Timing,precisão,clock_gettime/gettimeofday/syscall,latency_ns / throughput / binary_size / jitter,,,L0,Converte ticks em nanos/micros.
+M026,Memory barrier dmb,ARM,MMIO,correção,sem barrier explícita / código ingênuo,latency_ns / throughput / binary_size / jitter,,,L0,Ordena memória de dados.
+M027,Memory barrier dsb,ARM,MMIO,correção,sem barrier explícita / código ingênuo,latency_ns / throughput / binary_size / jitter,,,L0,Garante conclusão antes de prosseguir.
+M028,Memory barrier isb,ARM,MMIO,correção,sem barrier explícita / código ingênuo,latency_ns / throughput / binary_size / jitter,,,L0,Sincroniza pipeline de instrução.
+M029,SPI por registrador BCM,Raspberry,SPI,5x-50x vs userspace alto,biblioteca userspace padrão,latency_ns / throughput / binary_size / jitter,,,L0,Controla SPI0 diretamente.
+M030,I2C por registrador BCM,Raspberry,I2C,2x-20x,biblioteca userspace padrão,latency_ns / throughput / binary_size / jitter,,,L0,Controla BSC diretamente.
+M031,PWM por clock manager,Raspberry,PWM,precisão,biblioteca userspace padrão,latency_ns / throughput / binary_size / jitter,,,L0,Configura clock/divisor/range/data.
+M032,DMA control block chain,Raspberry,DMA,CPU livre,biblioteca userspace padrão,latency_ns / throughput / binary_size / jitter,,,L0,Encadeia transferências sem CPU.
+M033,DMA circular,Raspberry,DMA,streaming contínuo,biblioteca userspace padrão,latency_ns / throughput / binary_size / jitter,,,L0,Fluxo permanente com ring de CBs.
+M034,FIFO PWM para áudio,Raspberry,PWM/Audio,CPU livre,biblioteca userspace padrão,latency_ns / throughput / binary_size / jitter,,,L0,Alimenta PWM por FIFO/DMA.
+M035,GPIO event detect por polling leve,Raspberry,GPIO/IRQ,baixa latência,biblioteca userspace padrão,latency_ns / throughput / binary_size / jitter,,,L0,Observa flags GPEDS.
+M036,Afinidade de thread em Linux/Android,Linux/Android,Scheduler,jitter menor,scheduler padrão/log textual/wrapper libc,latency_ns / throughput / binary_size / jitter,,,L0,Fixa thread em núcleo específico.
+M037,Prioridade de thread para benchmark,Linux/Android,Scheduler,jitter menor,scheduler padrão/log textual/wrapper libc,latency_ns / throughput / binary_size / jitter,,,L0,Eleva prioridade quando permitido.
+M038,Isolamento de núcleo quando disponível,Linux,Scheduler,jitter menor,implementação padrão,latency_ns / throughput / binary_size / jitter,,,L0,Reduz interferência de scheduler.
+M039,Medição de p95 e p99 de latência,Todos,Benchmark,ciência,implementação padrão,latency_ns / throughput / binary_size / jitter,,,L0,Não olhar só média.
+M040,Medição de jitter por amostra,Todos,Benchmark,tempo real,implementação padrão,latency_ns / throughput / binary_size / jitter,,,L0,Registra variação temporal.
+M041,JNI bridge mínimo,Android NDK,JNI,2x-20x vs camada pesada,JNI/camada Java pesada,latency_ns / throughput / binary_size / jitter,,,L0,Expor C para Kotlin/Java com mínima fricção.
+M042,CMake separado por ABI,Android NDK,Build,organização,JNI/camada Java pesada,latency_ns / throughput / binary_size / jitter,,,L0,Flags por ABI.
+M043,Build arm64-v8a,Android NDK,Build,compatibilidade,JNI/camada Java pesada,latency_ns / throughput / binary_size / jitter,,,L0,Alvo 64-bit moderno.
+M044,Build armeabi-v7a,Android NDK,Build,compatibilidade,JNI/camada Java pesada,latency_ns / throughput / binary_size / jitter,,,L0,Alvo 32-bit ARM.
+M045,Detecção de ABI em runtime,Android,Runtime,robustez,Build/runtime genérico,latency_ns / throughput / binary_size / jitter,,,L0,Seleciona caminho correto.
+M046,Syscall direta quando fizer sentido,Linux/Android,Syscall,1.2x-5x pontual,scheduler padrão/log textual/wrapper libc,latency_ns / throughput / binary_size / jitter,,,L0,Evita wrapper em pontos críticos.
+M047,Ring buffer nativo exposto ao Kotlin/Java,Android NDK,Buffer,baixa cópia,JNI/camada Java pesada,latency_ns / throughput / binary_size / jitter,,,L0,Compartilha dados com menos overhead.
+M048,Log binário em vez de log textual pesado,Todos,Logging,5x-50x,implementação padrão,latency_ns / throughput / binary_size / jitter,,,L0,Reduz formatação e I/O.
+M049,Benchmark via Termux CLI,Termux,Benchmark,reprodutível,execução manual sem artefato,latency_ns / throughput / binary_size / jitter,,,L0,Roda testes direto no Android.
+M050,Exportação de resultado em JSON,Todos,Benchmark,automação,implementação padrão,latency_ns / throughput / binary_size / jitter,,,L0,Saída estruturada.
+M051,Hook de teste para Vectras,Vectras,Integração,validação,execução sem hook de benchmark,latency_ns / throughput / binary_size / jitter,,,L0,Executa benchmark no ambiente Vectras.
+M052,Probe de hot path no QEMU/TCG,QEMU,VM,diagnóstico,QEMU padrão sem probe,latency_ns / throughput / binary_size / jitter,,,L0,Identifica gargalos.
+M053,Medição de tradução vs execução no QEMU,QEMU,VM,ciência,QEMU padrão sem probe,latency_ns / throughput / binary_size / jitter,,,L0,Separa custo do TCG e runtime.
+M054,Batching de operações repetidas,Todos,Performance,2x-20x,implementação padrão,latency_ns / throughput / binary_size / jitter,,,L0,Agrupa trabalho para reduzir dispatch.
+M055,Cache local de resultado técnico,Todos,Cache,2x-50x,implementação padrão,latency_ns / throughput / binary_size / jitter,,,L0,Evita recomputar estados.
+M056,Comparação automática contra implementação padrão,Todos,Benchmark,prova,implementação padrão,latency_ns / throughput / binary_size / jitter,,,L0,Gera baseline e delta.
