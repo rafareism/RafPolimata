@@ -29,7 +29,9 @@ Este repositório passa a incluir uma documentação de referência de nível av
 
 ## Qualidade e automação
 
-- Pipeline GitHub Actions em `.github/workflows/ci.yml` com build estrito (`-Wall -Wextra -Werror`) e smoke test do binário.
+- Pipeline GitHub Actions em `.github/workflows/ci.yml` com validação do protocolo canônico, checagem C host, build estrito (`-Wall -Wextra -Werror`), smoke test do binário e relatório P(k).
 - Hotfix de compilação aplicado no núcleo C para restaurar uma base compilável e facilitar futuras refatorações incrementais.
 
 - [`docs/PROTOCOLO_FALSIFICABILIDADE_PK.md`](docs/PROTOCOLO_FALSIFICABILIDADE_PK.md): protocolo mínimo de falsificabilidade em P(k) com execução automática.
+- [`docs/PROTOCOLO_CANONICO_COHERENCIA.md`](docs/PROTOCOLO_CANONICO_COHERENCIA.md): contrato canônico que liga as 50 sementes matemáticas a invariantes, arquivos e gates de prova/queda.
+- [`configs/semantic_coherence.yml`](configs/semantic_coherence.yml): YAML operacional para orquestração mutável de coerência, benchmark e falsificabilidade.

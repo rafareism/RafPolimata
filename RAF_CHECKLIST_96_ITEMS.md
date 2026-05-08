@@ -1,0 +1,103 @@
+# Checklist 96 Itens
+
+## 40 Estratégias
+
+- [ ] S01 — Separar núcleo técnico de interface visual
+- [ ] S02 — Manter todo código crítico em C/C++/ASM
+- [ ] S03 — Criar camada única de registradores por arquitetura
+- [ ] S04 — Usar headers gerados e validados
+- [ ] S05 — Criar perfil por alvo
+- [ ] S06 — Separar código experimental de código validado
+- [ ] S07 — Manter build mínimo por placa
+- [ ] S08 — Manter build NDK separado do build MCU
+- [ ] S09 — Criar modo sem libc quando possível
+- [ ] S10 — Criar modo com libc mínima
+- [ ] S11 — Medir antes de otimizar
+- [ ] S12 — Comparar sempre contra baseline conhecido
+- [ ] S13 — Otimizar primeiro GPIO, Timer, ADC, UART e SPI
+- [ ] S14 — Remover float onde fixed-point resolve
+- [ ] S15 — Remover heap onde buffer estático resolve
+- [ ] S16 — Evitar branch em hot path
+- [ ] S17 — Usar lookup table quando multiplicação/divisão pesar
+- [ ] S18 — Usar bitmask em vez de lógica condicional longa
+- [ ] S19 — Usar batching em operações repetitivas
+- [ ] S20 — Usar ring buffer para fluxo contínuo
+- [ ] S21 — Criar teste de tamanho binário
+- [ ] S22 — Criar teste de latência por operação
+- [ ] S23 — Criar teste de throughput por barramento
+- [ ] S24 — Criar teste de jitter temporal
+- [ ] S25 — Criar teste de consumo energético
+- [ ] S26 — Criar teste de estabilidade por 1h, 6h e 24h
+- [ ] S27 — Criar tabela de ciclos estimados vs ciclos medidos
+- [ ] S28 — Gerar CSV/JSON em todo benchmark
+- [ ] S29 — Salvar hash do binário compilado
+- [ ] S30 — Salvar flags do compilador em cada execução
+- [ ] S31 — Transformar cada técnica em exemplo isolado
+- [ ] S32 — Criar documentação curta por técnica
+- [ ] S33 — Criar documentação longa por arquitetura
+- [ ] S34 — Criar matriz onde funciona/onde não funciona
+- [ ] S35 — Criar benchmark visual para GitHub
+- [ ] S36 — Criar pacote educacional para Arduino e Raspberry
+- [ ] S37 — Criar pacote industrial para Android NDK e ARM
+- [ ] S38 — Criar modo Codex para corrigir compilação
+- [ ] S39 — Criar modo CI para impedir regressão
+- [ ] S40 — Criar release versionada com resultados reais
+
+## 56 Métodos
+
+- [ ] M001 — Acesso direto a DDRx PORTx PINx (MCU/AVR / GPIO)
+- [ ] M002 — Toggle por escrita em PINx (MCU/AVR / GPIO)
+- [ ] M003 — Timer CTC para evento periódico (MCU/AVR / Timer)
+- [ ] M004 — Timer Fast PWM por registrador (MCU/AVR / PWM)
+- [ ] M005 — Timer Phase Correct PWM para controle motor (MCU/AVR / PWM/Motor)
+- [ ] M006 — Input Capture para medir pulso (MCU/AVR / Timer)
+- [ ] M007 — Output Compare para gerar onda sem CPU (MCU/AVR / Timer)
+- [ ] M008 — ADC free-running (MCU/AVR / ADC)
+- [ ] M009 — ADC com oversampling (MCU/AVR / ADC/DSP)
+- [ ] M010 — ADC com média móvel inteira (MCU/AVR / ADC/DSP)
+- [ ] M011 — ADC com filtro IIR fixed-point (MCU/AVR / ADC/DSP)
+- [ ] M012 — UART polling mínimo (MCU/AVR / UART)
+- [ ] M013 — UART interrupt-driven com ring buffer (MCU/AVR / UART)
+- [ ] M014 — SPI full-duplex por registrador (MCU/AVR / SPI)
+- [ ] M015 — SPI burst transfer (MCU/AVR / SPI)
+- [ ] M016 — I2C/TWI com timeout (MCU/AVR / I2C)
+- [ ] M017 — Watchdog como recuperação de travamento (MCU/AVR / Safety)
+- [ ] M018 — Watchdog como base temporal aproximada (MCU/AVR / Timer)
+- [ ] M019 — Sleep mode com wake por interrupção (MCU/AVR / Power)
+- [ ] M020 — Brown-out flag como diagnóstico de alimentação (MCU/AVR / Power/Safety)
+- [ ] M021 — GPIO por mmap (Raspberry/Linux / GPIO)
+- [ ] M022 — GPIO por /dev/gpiomem (Raspberry/Linux / GPIO)
+- [ ] M023 — GPIO por /dev/mem controlado (Raspberry/Linux / MMIO)
+- [ ] M024 — Leitura de contador ARM64 cntvct_el0 (ARM64 / Timing)
+- [ ] M025 — Uso de cntfrq_el0 para converter ciclos em tempo (ARM64 / Timing)
+- [ ] M026 — Memory barrier dmb (ARM / MMIO)
+- [ ] M027 — Memory barrier dsb (ARM / MMIO)
+- [ ] M028 — Memory barrier isb (ARM / MMIO)
+- [ ] M029 — SPI por registrador BCM (Raspberry / SPI)
+- [ ] M030 — I2C por registrador BCM (Raspberry / I2C)
+- [ ] M031 — PWM por clock manager (Raspberry / PWM)
+- [ ] M032 — DMA control block chain (Raspberry / DMA)
+- [ ] M033 — DMA circular (Raspberry / DMA)
+- [ ] M034 — FIFO PWM para áudio (Raspberry / PWM/Audio)
+- [ ] M035 — GPIO event detect por polling leve (Raspberry / GPIO/IRQ)
+- [ ] M036 — Afinidade de thread em Linux/Android (Linux/Android / Scheduler)
+- [ ] M037 — Prioridade de thread para benchmark (Linux/Android / Scheduler)
+- [ ] M038 — Isolamento de núcleo quando disponível (Linux / Scheduler)
+- [ ] M039 — Medição de p95 e p99 de latência (Todos / Benchmark)
+- [ ] M040 — Medição de jitter por amostra (Todos / Benchmark)
+- [ ] M041 — JNI bridge mínimo (Android NDK / JNI)
+- [ ] M042 — CMake separado por ABI (Android NDK / Build)
+- [ ] M043 — Build arm64-v8a (Android NDK / Build)
+- [ ] M044 — Build armeabi-v7a (Android NDK / Build)
+- [ ] M045 — Detecção de ABI em runtime (Android / Runtime)
+- [ ] M046 — Syscall direta quando fizer sentido (Linux/Android / Syscall)
+- [ ] M047 — Ring buffer nativo exposto ao Kotlin/Java (Android NDK / Buffer)
+- [ ] M048 — Log binário em vez de log textual pesado (Todos / Logging)
+- [ ] M049 — Benchmark via Termux CLI (Termux / Benchmark)
+- [ ] M050 — Exportação de resultado em JSON (Todos / Benchmark)
+- [ ] M051 — Hook de teste para Vectras (Vectras / Integração)
+- [ ] M052 — Probe de hot path no QEMU/TCG (QEMU / VM)
+- [ ] M053 — Medição de tradução vs execução no QEMU (QEMU / VM)
+- [ ] M054 — Batching de operações repetidas (Todos / Performance)
+- [ ] M055 — Cache local de resultado técnico (Todos / Cache)
+- [ ] M056 — Comparação automática contra implementação padrão (Todos / Benchmark)
